@@ -29,11 +29,11 @@
   
   <div id="success">
     
-    Success!
+    <h1>Success!</h1>
     
     <p id="success_message"></p>
     
-    <a id="redirect_link" href="">Open app</a>
+    <a id="redirect_link" href="">Back to <span id="appName">app</span></a>
     
   </div>
   
@@ -48,13 +48,15 @@
   <script>
     var success = "false";
     var message = "";
-    
+    var redirect_url = "";
+    var app_name = "";
     
     function getParameters() {
         let params = new URLSearchParams(document.location.search);
         success = params.get("success");
         message = params.get("message");
-        redirect_url = params.get("redirect_url");
+        redirect_url = params.get("appCallback");
+        app_name = params.get("appName");
     }
     
     getParameters();
@@ -64,12 +66,12 @@
       document.getElementById('success').hidden = false;
       document.getElementById('failure').hidden = true;
       document.getElementById('redirect_link').href = redirect_url;
+      document.getElementById('appName').innerHTML = app_name;
     } else {
       document.getElementById('failure_message').innerHTML = message;      
       document.getElementById('success').hidden = true;
       document.getElementById('failure').hidden = false;
     }
-    
     
   </script>
     
