@@ -26,9 +26,52 @@
 </head>
 
 <body>
-  <!--
-  <script src="js/scripts.js"></script>
-  -->
+  
+  <div id="success">
+    
+    Success!
+    
+    <p id="success_message"></p>
+    
+    <a id="redirect_link" href="">Open app</a>
+    
+  </div>
+  
+  <div id="failure">
+    
+    Oh no!
+    
+    <p id="failure_message"></p>
+    
+  </div>
+    
+  <script>
+    var success = "false";
+    var message = "";
+    
+    
+    function getParameters() {
+        let params = new URLSearchParams(document.location.search);
+        success = params.get("success");
+        message = params.get("message");
+        redirect_url = params.get("redirect_url");
+    }
+    
+    getParameters();
+    
+    if(success == "true") {
+      document.getElementById('success_message').innerHTML = message;
+      document.getElementById('success').hidden = false;
+      document.getElementById('failure').hidden = true;
+      document.getElementById('redirect_link').href = redirect_url;
+    } else {
+      document.getElementById('failure_message').innerHTML = message;      
+      document.getElementById('success').hidden = true;
+      document.getElementById('failure').hidden = false;
+    }
+    
+    
+  </script>
     
     
 </body>
