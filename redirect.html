@@ -13,60 +13,32 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dawnhealth.com">
   <meta property="og:description" content="PACE email verification">
-  <!--
-  <meta property="og:image" content="image.png">
-
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-  -->
 
 </head>
 
 <body style="text-align: center;">
   
   <div id="success">
-
     <svg width="50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     	 viewBox="0 0 490.05 490.05" style="enable-background:new 0 0 490.05 490.05;" xml:space="preserve"><g><g><path d="M418.275,418.275c95.7-95.7,95.7-250.8,0-346.5s-250.8-95.7-346.5,0s-95.7,250.8,0,346.5S322.675,513.975,418.275,418.275
     			z M157.175,207.575l55.1,55.1l120.7-120.6l42.7,42.7l-120.6,120.6l-42.8,42.7l-42.7-42.7l-55.1-55.1L157.175,207.575z"/></g></g></svg>
-        
     <h1>Email verified!</h1>
-    
-    
     <p id="success_message"></p>
-    
     <a id="redirect_link" href="">Back to <span id="appName">app</span></a>
-    
   </div>
   
   <div id="failure">
-    
     <svg width="50px" viewBox="0 -8 528 528" xmlns="http://www.w3.org/2000/svg" ><title>fail</title><path d="M264 456Q210 456 164 429 118 402 91 356 64 310 64 256 64 202 91 156 118 110 164 83 210 56 264 56 318 56 364 83 410 110 437 156 464 202 464 256 464 310 437 356 410 402 364 429 318 456 264 456ZM264 288L328 352 360 320 296 256 360 192 328 160 264 224 200 160 168 192 232 256 168 320 200 352 264 288Z" /></svg>
-    
     <h1>Email verification FAILED :-(</h1>
-    
-    <p id="failure_message"></p>
-    
+    <p id="failure_message"></p>    
   </div>
     
   <script>
-    var success = "false";
-    var message = "";
-    var redirect_url = "";
-    var app_name = "";
-    
-    function getParameters() {
-        let params = new URLSearchParams(document.location.search);
-        success = params.get("success");
-        message = params.get("message");
-        redirect_url = params.get("appCallback");
-        app_name = params.get("appName");
-    }
-    
-    getParameters();
+    var params = new URLSearchParams(document.location.search);
+    var success = params.get("success");
+    var message = params.get("message");
+    var redirect_url = params.get("appCallback");
+    var app_name = params.get("appName");
     
     if(success == "true") {
       document.getElementById('success_message').innerHTML = message;
@@ -79,9 +51,7 @@
       document.getElementById('success').hidden = true;
       document.getElementById('failure').hidden = false;
     }
-    
   </script>
-    
     
 </body>
 </html>
